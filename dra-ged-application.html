@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GED Program Application | Dooplaya Rise Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary:    #1A1A1A;
+    --color-gold:       #F5A800;
+    --color-gold-dark:  #C88B00;
+    --color-bg:         #FFFFFF;
+    --color-surface:    #F5F5F5;
+    --color-text:       #333333;
+    --color-muted:      #666666;
+    --color-divider:    #E0E0E0;
+    --color-notice-bg:  #FFF8E1;
+    --color-notice-txt: #7B5800;
+    --color-error:      #D32F2F;
+    --color-error-bg:   #FFEBEE;
+    --color-success:    #2E7D32;
+    --color-success-bg: #E8F5E9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    background: var(--color-surface);
+    color: var(--color-text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--color-primary);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  .header-text .school-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+  .header-text .tagline {
+    font-size: 0.7rem;
+    color: var(--color-gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-badge {
+    margin-left: auto;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO BANNER ── */
+  .hero {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 40px 32px 36px;
+    text-align: center;
+    border-bottom: 4px solid var(--color-gold);
+  }
+  .hero .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .hero h1 em { color: var(--color-gold); font-style: normal; }
+  .hero .subtitle {
+    font-size: 0.9rem;
+    color: #BBBBBB;
+    margin-bottom: 18px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    color: #CCCCCC;
+  }
+  .meta-item .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    flex-shrink: 0;
+  }
+  .meta-item strong { color: #fff; }
+
+  /* ── NOTICE BANNER ── */
+  .notice {
+    background: var(--color-notice-bg);
+    border-left: 4px solid var(--color-gold);
+    padding: 13px 20px;
+    font-size: 0.875rem;
+    color: var(--color-notice-txt);
+    max-width: 820px;
+    margin: 24px auto 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .notice strong { font-weight: 700; }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-container {
+    background: #fff;
+    border: 1px solid var(--color-divider);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .progress-label .current { color: var(--color-gold); }
+  .progress-bar-bg {
+    height: 6px;
+    background: var(--color-surface);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--color-gold);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+  .steps-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+  }
+  .step-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    cursor: default;
+  }
+  .step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-divider);
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  .step-dot.done .step-circle {
+    background: var(--color-primary);
+    color: var(--color-gold);
+    border-color: var(--color-primary);
+  }
+  .step-dot.active .step-circle {
+    background: var(--color-gold);
+    color: var(--color-primary);
+    border-color: var(--color-gold-dark);
+    box-shadow: 0 0 0 3px rgba(245,168,0,0.25);
+  }
+  .step-label {
+    font-size: 0.63rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--color-muted);
+    text-align: center;
+    line-height: 1.2;
+  }
+  .step-dot.active .step-label { color: var(--color-gold-dark); }
+  .step-dot.done .step-label { color: var(--color-primary); }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: #fff;
+    border: 1px solid var(--color-divider);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .section-header {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-letter {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title-group .section-eyebrow {
+    font-size: 0.68rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .section-title-group h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .form-body {
+    padding: 28px 28px 24px;
+  }
+
+  /* ── FORM ELEMENTS ── */
+  .field-group {
+    margin-bottom: 22px;
+  }
+  .field-group:last-child { margin-bottom: 0; }
+  .field-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.83rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+  .field-sub {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 6px;
+    font-style: italic;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .required-star { color: var(--color-gold); margin-left: 2px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(--color-divider);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(245,168,0,0.15);
+  }
+  textarea { min-height: 100px; resize: vertical; line-height: 1.6; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* Radio & Checkbox */
+  .radio-group, .checkbox-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .radio-option, .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    padding: 8px 16px;
+    border: 1.5px solid var(--color-divider);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .radio-option:hover, .checkbox-option:hover {
+    border-color: var(--color-gold);
+    background: var(--color-notice-bg);
+  }
+  .radio-option input, .checkbox-option input { display: none; }
+  .radio-option.selected, .checkbox-option.selected {
+    border-color: var(--color-gold);
+    background: var(--color-notice-bg);
+    color: var(--color-notice-txt);
+    font-weight: 600;
+  }
+  .radio-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--color-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .radio-option.selected .radio-dot {
+    border-color: var(--color-gold);
+    background: var(--color-gold);
+  }
+
+  /* Conditional field */
+  .conditional-field {
+    display: none;
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--color-surface);
+    border-radius: 6px;
+    border-left: 3px solid var(--color-gold);
+  }
+  .conditional-field.visible { display: block; }
+
+  /* Recommender card */
+  .rec-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .rec-card-title {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gold-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rec-number {
+    background: var(--color-primary);
+    color: var(--color-gold);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  /* Fee table */
+  .fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-divider);
+  }
+  .fee-table th {
+    background: var(--color-primary);
+    color: var(--color-gold);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .fee-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--color-divider);
+    color: var(--color-text);
+  }
+  .fee-table tr:last-child td { border-bottom: none; }
+  .fee-table tr:nth-child(even) td { background: var(--color-surface); }
+  .fee-table .total-row td {
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-notice-bg) !important;
+    border-top: 2px solid var(--color-gold);
+  }
+  .fee-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .fee-tab {
+    padding: 8px 18px;
+    border: 1.5px solid var(--color-divider);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: #fff;
+    color: var(--color-muted);
+    transition: all 0.2s;
+  }
+  .fee-tab.active {
+    background: var(--color-gold);
+    color: var(--color-primary);
+    border-color: var(--color-gold);
+  }
+  .fee-view { display: none; }
+  .fee-view.active { display: block; }
+
+  /* Payment options */
+  .payment-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .payment-option {
+    flex: 1;
+    min-width: 130px;
+    border: 1.5px solid var(--color-divider);
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  .payment-option:hover { border-color: var(--color-gold); }
+  .payment-option.selected {
+    border-color: var(--color-gold);
+    background: var(--color-notice-bg);
+  }
+  .payment-option input { display: none; }
+  .payment-pct {
+    font-size: 1.1rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .payment-option.selected .payment-pct { color: var(--color-gold-dark); }
+  .payment-thb {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .payment-freq {
+    font-size: 0.68rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Declaration */
+  .declaration-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-left: 4px solid var(--color-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+  .sig-area {
+    border: 1.5px dashed var(--color-divider);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    margin-top: 8px;
+  }
+  .sig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* NAV BUTTONS */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    gap: 16px;
+  }
+  .btn {
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-gold-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245,168,0,0.3);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-muted);
+    border: 1.5px solid var(--color-divider);
+  }
+  .btn-secondary:hover { border-color: var(--color-text); color: var(--color-text); }
+  .btn-submit {
+    background: var(--color-primary);
+    color: var(--color-gold);
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+  .btn-submit:hover {
+    background: #2d2d2d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+  /* STEP PANEL */
+  .step-panel { display: none; }
+  .step-panel.active { display: block; }
+
+  /* SUCCESS */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 32px;
+    background: #fff;
+    border: 1px solid var(--color-divider);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .success-screen.visible { display: block; }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-gold);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .success-screen h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+  .success-screen p { color: var(--color-muted); font-size: 0.95rem; line-height: 1.7; max-width: 500px; margin: 0 auto; }
+
+  /* Divider */
+  .section-divider {
+    height: 1px;
+    background: var(--color-divider);
+    margin: 22px 0;
+  }
+
+  /* Info note */
+  .info-note {
+    background: var(--color-notice-bg);
+    border-left: 3px solid var(--color-gold);
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    color: var(--color-notice-txt);
+    border-radius: 0 6px 6px 0;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    .grid-2, .grid-3, .sig-row { grid-template-columns: 1fr; }
+    .form-body { padding: 20px 16px 18px; }
+    .hero-meta { gap: 14px; }
+    .steps-row { gap: 2px; }
+    .step-label { display: none; }
+    .payment-options { flex-direction: column; }
+    header { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="header-brand">
+    <div class="logo-mark">DRA</div>
+    <div class="header-text">
+      <div class="school-name">Dooplaya Rise Academy</div>
+      <div class="tagline">Learn. Grow. Rise.</div>
+    </div>
+  </a>
+  <div class="header-badge">GED Application</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="eyebrow">Dooplaya Rise Academy — Dooplaya District, Karen State</p>
+  <h1>GED Program <em>Application</em></h1>
+  <p class="subtitle">2026–2027 Academic Year &nbsp;·&nbsp; 10-Month Program</p>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="dot"></span><span><strong>Deadline:</strong> April 30, 2026 — 5:00 PM</span></div>
+    <div class="meta-item"><span class="dot"></span><span><strong>Exam:</strong> May 15, 2026, 8 AM–12 PM</span></div>
+    <div class="meta-item"><span class="dot"></span><span><strong>Interview:</strong> May 16, 2026, 8 AM</span></div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- NOTICE -->
+  <div class="notice">
+    <strong>Important:</strong> Only applicants aged 15–25 are eligible. Shortlisted applicants must pass the entrance exam before proceeding to interview.
+    Contact: <strong>+66 886184692</strong> (Thailand) / <strong>+95 9763416163</strong> (Myanmar) · <a href="mailto:dooplayariseacademy@hotmail.com" style="color: var(--color-notice-txt); font-weight:700;">dooplayariseacademy@hotmail.com</a>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-container" id="progressContainer">
+    <div class="progress-label">
+      <span class="current" id="progressText">Step 1 of 7 — Applicant Information</span>
+      <span id="progressPct">14%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill" style="width:14%"></div>
+    </div>
+    <div class="steps-row">
+      <div class="step-dot active" data-step="1">
+        <div class="step-circle">A</div>
+        <div class="step-label">Info</div>
+      </div>
+      <div class="step-dot" data-step="2">
+        <div class="step-circle">B</div>
+        <div class="step-label">Medical</div>
+      </div>
+      <div class="step-dot" data-step="3">
+        <div class="step-circle">C</div>
+        <div class="step-label">Education</div>
+      </div>
+      <div class="step-dot" data-step="4">
+        <div class="step-circle">D</div>
+        <div class="step-label">Emergency</div>
+      </div>
+      <div class="step-dot" data-step="5">
+        <div class="step-circle">E</div>
+        <div class="step-label">Recommenders</div>
+      </div>
+      <div class="step-dot" data-step="6">
+        <div class="step-circle">F</div>
+        <div class="step-label">Financial</div>
+      </div>
+      <div class="step-dot" data-step="7">
+        <div class="step-circle">G</div>
+        <div class="step-label">Declaration</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <form id="appForm"
+        action="https://formspree.io/f/xaqavkzo"
+        method="POST">
+
+    <!-- ====== STEP 1: APPLICANT INFO ====== -->
+    <div class="step-panel active" id="step1">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">A</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section A</div>
+            <h2>Applicant Information · နလြာ်ထြားသူ၏အချ်အလ်</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="field-group">
+            <label class="field-label">Full Name (in English) <span class="required-star">*</span></label>
+            <span class="field-sub">As it appears on your ID / မှတ်ပုံတင်ထဲမှအမည်</span>
+            <input type="text" name="full_name_en" placeholder="e.g. Saw Eh K'paw" required>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">အမည်အပပည့်အစုံ (မြန်မာ / ကရင်)</label>
+            <span class="field-sub">Full name in Myanmar or Karen script</span>
+            <input type="text" name="full_name_mm" placeholder="အမည်ထည့်ပါ">
+          </div>
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">National ID Number · မှတ်ပုံတင်နံပါတ် <span class="required-star">*</span></label>
+              <input type="text" name="national_id" placeholder="e.g. 1/AreaCode(N)000000" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Date of Birth (DD/MM/YYYY) <span class="required-star">*</span></label>
+              <span class="field-sub">လမွားသကြရာဇ်</span>
+              <input type="date" name="dob" required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">Age · အသက် <span class="required-star">*</span></label>
+              <span class="field-sub">Ages 15–25 only · အသက်၁၅ မှ ၂၅</span>
+              <input type="number" name="age" min="15" max="25" placeholder="e.g. 18" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Gender · လိင် <span class="required-star">*</span></label>
+              <div class="radio-group" style="margin-top:10px;">
+                <label class="radio-option" onclick="selectRadio(this,'gender','Male')">
+                  <input type="radio" name="gender" value="Male">
+                  <div class="radio-dot"></div> Male · ကျား
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'gender','Female')">
+                  <input type="radio" name="gender" value="Female">
+                  <div class="radio-dot"></div> Female · မ
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">Ethnicity · လူမျိုး <span class="required-star">*</span></label>
+              <select name="ethnicity" required>
+                <option value="">— Select / ရွေးချယ်ပါ —</option>
+                <option value="Karen (Sgaw)">Karen (Sgaw)</option>
+                <option value="Karen (Pwo)">Karen (Pwo)</option>
+                <option value="Bamar">Bamar</option>
+                <option value="Mon">Mon</option>
+                <option value="Shan">Shan</option>
+                <option value="Other">Other / အခြား</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Religion · ကိုးကွယ်သည့်ဘာသာ</label>
+              <select name="religion">
+                <option value="">— Select / ရွေးချယ်ပါ —</option>
+                <option value="Christianity">Christianity / ခရစ်ယာန်</option>
+                <option value="Buddhism">Buddhism / ဗုဒ္ဓဘာသာ</option>
+                <option value="Islam">Islam / အစ္စလာမ်</option>
+                <option value="Animism">Animism</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">Phone Number · ဖုန်းနံပါတ် <span class="required-star">*</span></label>
+              <input type="tel" name="phone" placeholder="+66 or +95..." required>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Email Address · အီးမေးလ် <span class="required-star">*</span></label>
+              <input type="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Current Address · နေရပ်လိပ်စာ <span class="required-star">*</span></label>
+            <textarea name="current_address" placeholder="Village / Township / State" style="min-height:70px;" required></textarea>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="field-group">
+            <label class="field-label">Do you have your own laptop? · ကိုယ်ပိုင်လပ်တော့(ကွန်ပျူတာ)ရှိပါသလား? <span class="required-star">*</span></label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option" onclick="selectRadio(this,'has_laptop','Yes'); toggleCondField('laptop_no_field', false)">
+                <input type="radio" name="has_laptop" value="Yes">
+                <div class="radio-dot"></div> Yes · ရှိသည်
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'has_laptop','No'); toggleCondField('laptop_no_field', true)">
+                <input type="radio" name="has_laptop" value="No">
+                <div class="radio-dot"></div> No · မရှိ
+              </label>
+            </div>
+            <div class="conditional-field" id="laptop_no_field">
+              <label class="field-label" style="margin-bottom:8px;">Can you buy a laptop within 1–2 months of enrollment? <span class="required-star">*</span></label>
+              <span class="field-sub">ကျောင်းတက်နေစဉ် (၁ မှ ၂) လအတွင်း ဝယ်ယူနိုင်ပါမည်လား?</span>
+              <div class="radio-group">
+                <label class="radio-option" onclick="selectRadio(this,'can_buy_laptop','Yes')">
+                  <input type="radio" name="can_buy_laptop" value="Yes">
+                  <div class="radio-dot"></div> Yes
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'can_buy_laptop','No')">
+                  <input type="radio" name="can_buy_laptop" value="No">
+                  <div class="radio-dot"></div> No
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <div></div>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Medical Info &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 2: MEDICAL ====== -->
+    <div class="step-panel" id="step2">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">B</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section B</div>
+            <h2>Medical Information · ကန်းမာရေးအချ်အလ်</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="field-group">
+            <label class="field-label">Do you have any medical conditions? · ကျန်းမာရေးပြဿနာရှိပါသလား? <span class="required-star">*</span></label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option" onclick="selectRadio(this,'has_medical','Yes'); toggleCondField('medical_details', true)">
+                <input type="radio" name="has_medical" value="Yes">
+                <div class="radio-dot"></div> Yes · ရှိသည်
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'has_medical','No'); toggleCondField('medical_details', false)">
+                <input type="radio" name="has_medical" value="No">
+                <div class="radio-dot"></div> No · မရှိ
+              </label>
+            </div>
+            <div class="conditional-field" id="medical_details">
+              <label class="field-label" style="margin-bottom:6px;">Please describe your condition(s): <span class="required-star">*</span></label>
+              <span class="field-sub">ရှိပါက အသေးစိတ်ဖော်ပြပါ</span>
+              <textarea name="medical_details" placeholder="Describe your medical condition(s)..."></textarea>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="field-group">
+            <label class="field-label">Do you have any food allergies? · ဓာတ်မတည့်သောအစားအစာရှိပါသလား? <span class="required-star">*</span></label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option" onclick="selectRadio(this,'has_allergy','Yes'); toggleCondField('allergy_details', true)">
+                <input type="radio" name="has_allergy" value="Yes">
+                <div class="radio-dot"></div> Yes · ရှိသည်
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'has_allergy','No'); toggleCondField('allergy_details', false)">
+                <input type="radio" name="has_allergy" value="No">
+                <div class="radio-dot"></div> No · မရှိ
+              </label>
+            </div>
+            <div class="conditional-field" id="allergy_details">
+              <label class="field-label" style="margin-bottom:6px;">Please list your food allergies: <span class="required-star">*</span></label>
+              <span class="field-sub">ဓာတ်မတည့်သောအစားအစာများ ဖော်ပြပါ</span>
+              <textarea name="allergy_details" placeholder="e.g. peanuts, shellfish..."></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Education &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 3: EDUCATION ====== -->
+    <div class="step-panel" id="step3">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">C</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section C</div>
+            <h2>Educational Background · ပညာရေးနောက်ခံ</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">Last Grade Completed <span class="required-star">*</span></label>
+              <span class="field-sub">နောက်ဆုံးတက်ရောက်ခဲ့သည့်တန်း</span>
+              <select name="last_grade" required>
+                <option value="">— Select grade —</option>
+                <option>Grade 4 / တန်း ၄</option>
+                <option>Grade 5 / တန်း ၅</option>
+                <option>Grade 6 / တန်း ၆</option>
+                <option>Grade 7 / တန်း ၇</option>
+                <option>Grade 8 / တန်း ၈</option>
+                <option>Grade 9 / တန်း ၉</option>
+                <option>Grade 10 / တန်း ၁၀</option>
+                <option>Grade 11 / တန်း ၁၁</option>
+                <option>Grade 12 / တန်း ၁၂</option>
+                <option>Other / အခြား</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Previous School Name <span class="required-star">*</span></label>
+              <span class="field-sub">နောက်ဆုံး တက်ရောက်ခဲ့သည့် ကျောင်းအမည်</span>
+              <input type="text" name="prev_school" placeholder="e.g. DRA Middle School" required>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Why do you want to join this GED program? <span class="required-star">*</span></label>
+            <span class="field-sub">
+              မည်သည့်ကြောင့် ဤ GED program ကိုတက်ရောက်လိုပါသနည်း?<br>
+              You may answer in <strong>English, Myanmar (Burmese), or Karen</strong> — ၈၀–၁၀၀ words / စကားလုံး (80-100 words)
+            </span>
+            <textarea name="motivation" rows="6" placeholder="Write your answer here (English / မြန်မာ / ကရင်) · ၈၀-၁၀၀ words..." required style="min-height:130px;"></textarea>
+            <div class="info-note">📝 You may write in English, Myanmar (Burmese), or Karen language. Aim for 80–100 words.</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Emergency Contact &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 4: EMERGENCY CONTACT ====== -->
+    <div class="step-panel" id="step4">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">D</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section D</div>
+            <h2>Emergency Contact · အရေးပေါ်ဆက်သွယ်နိုင်မည့် အိမ်ထိန်းသူ</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="field-group">
+            <label class="field-label">Full Name · အမည်အပြည့်အစုံ <span class="required-star">*</span></label>
+            <input type="text" name="emerg_name" placeholder="Full name of contact person" required>
+          </div>
+
+          <div class="grid-2">
+            <div class="field-group">
+              <label class="field-label">Relationship to Student <span class="required-star">*</span></label>
+              <span class="field-sub">ကျောင်းသားနှင့်ဆက်နွယ်မှု (ဥပမာ: အဖ, အမေ, အကို)</span>
+              <select name="emerg_relationship" required>
+                <option value="">— Select relationship —</option>
+                <option value="Father / အဖ">Father / အဖ</option>
+                <option value="Mother / အမေ">Mother / အမေ</option>
+                <option value="Elder Brother / အကို">Elder Brother / အကို</option>
+                <option value="Elder Sister / အစ်မ">Elder Sister / အစ်မ</option>
+                <option value="Guardian / အုပ်ထိန်းသူ">Guardian / အုပ်ထိန်းသူ</option>
+                <option value="Other / အခြား">Other / အခြား</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Phone Number · ဖုန်းနံပါတ် <span class="required-star">*</span></label>
+              <input type="tel" name="emerg_phone" placeholder="+66 or +95..." required>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Email Address or Facebook</label>
+            <span class="field-sub">အီးမေးလ်လိပ်စာ (ရှိပါက) သို့မဟုတ် ဖေ့စ်ဘွတ်အကောင့်</span>
+            <input type="text" name="emerg_email_fb" placeholder="email@example.com or facebook.com/username">
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Recommendations &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 5: RECOMMENDATIONS ====== -->
+    <div class="step-panel" id="step5">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">E</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section E</div>
+            <h2>Recommendations · ထောက်ခံသူ (၂) ဦး</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="info-note" style="margin-bottom:20px;">
+            ⚠️ Recommenders must <strong>not</strong> be family members or personal friends. Accepted recommenders: village chief, pastor/monk, district or township education coordinator.
+            <br><em>မိတ်ဆွေ သို့မဟုတ် သူငယ်ချင်း ဆွေမျိုးတော်စပ်သူများ ထောက်ခံသူမဖြစ်ရပါ။</em>
+          </div>
+
+          <!-- Recommender 1 -->
+          <div class="rec-card">
+            <div class="rec-card-title">
+              <span class="rec-number">1</span>
+              Recommender 1 · ထောက်ခံသူ ၁
+            </div>
+            <div class="grid-2">
+              <div class="field-group">
+                <label class="field-label">Full Name <span class="required-star">*</span></label>
+                <input type="text" name="rec1_name" placeholder="Full name" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Position / Title · ရာထူး/တာဝန် <span class="required-star">*</span></label>
+                <input type="text" name="rec1_position" placeholder="e.g. Village Chief, Pastor" required>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field-group">
+                <label class="field-label">Phone · ဖုန်း <span class="required-star">*</span></label>
+                <input type="tel" name="rec1_phone" placeholder="+66 or +95..." required>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Email Address (if any) · အီးမေးလ် (ရှိပါက)</label>
+                <input type="email" name="rec1_email" placeholder="optional">
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommender 2 -->
+          <div class="rec-card">
+            <div class="rec-card-title">
+              <span class="rec-number">2</span>
+              Recommender 2 · ထောက်ခံသူ ၂
+            </div>
+            <div class="grid-2">
+              <div class="field-group">
+                <label class="field-label">Full Name <span class="required-star">*</span></label>
+                <input type="text" name="rec2_name" placeholder="Full name" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Position / Title · ရာထူး/တာဝန် <span class="required-star">*</span></label>
+                <input type="text" name="rec2_position" placeholder="e.g. Education Coordinator" required>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field-group">
+                <label class="field-label">Phone · ဖုန်း <span class="required-star">*</span></label>
+                <input type="tel" name="rec2_phone" placeholder="+66 or +95..." required>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Email Address (if any) · အီးမေးလ် (ရှိပါက)</label>
+                <input type="email" name="rec2_email" placeholder="optional">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Financial &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 6: FINANCIAL ====== -->
+    <div class="step-panel" id="step6">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">F</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section F</div>
+            <h2>Financial & Residential · ငွေကြေးနှင့် အဆောင်</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <!-- Program type tabs -->
+          <div class="field-group">
+            <label class="field-label">Select your program track: <span class="required-star">*</span></label>
+            <div class="fee-tabs" style="margin-top:8px;">
+              <button type="button" class="fee-tab active" onclick="showFeeView('ged')">GED Program</button>
+              <button type="button" class="fee-tab" onclick="showFeeView('pre')">GED Foundations + Pre-GED</button>
+            </div>
+            <input type="hidden" name="program_track" id="program_track" value="GED Program">
+          </div>
+
+          <div class="fee-view active" id="fee-ged">
+            <table class="fee-table">
+              <thead><tr><th>#</th><th>Item</th><th>Amount (THB)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>School Fee (ကျောင်းစရိတ်) · 10 months</td><td>฿12,000</td></tr>
+                <tr><td>2</td><td>Dorm Fee (အဆောင်ခ) · 10 months</td><td>฿10,000</td></tr>
+                <tr><td>3</td><td>Deposit (စရပ်ငွေ)</td><td>฿1,000</td></tr>
+                <tr><td>4</td><td>Uniform (ယူနီဖောင်း)</td><td>฿700</td></tr>
+                <tr><td>5</td><td>Textbook (စာအုပ်ကြေး)</td><td>฿1,200</td></tr>
+                <tr><td>6</td><td>Exam Fee — 4 subjects (စာမေးပွဲကြေး)*</td><td>฿12,000*</td></tr>
+                <tr class="total-row"><td></td><td><strong>Total (excl. exam fee)</strong></td><td><strong>฿24,900</strong></td></tr>
+              </tbody>
+            </table>
+            <div class="info-note">*Exam fee can be paid separately. Exchange rate may vary slightly.</div>
+          </div>
+
+          <div class="fee-view" id="fee-pre">
+            <table class="fee-table">
+              <thead><tr><th>#</th><th>Item</th><th>Amount (THB)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>School Fee (ကျောင်းစရိတ်) · 10 months</td><td>฿12,000</td></tr>
+                <tr><td>2</td><td>Dorm Fee (အဆောင်ခ) · 10 months</td><td>฿10,000</td></tr>
+                <tr><td>3</td><td>Deposit (စရပ်ငွေ)</td><td>฿1,000</td></tr>
+                <tr><td>4</td><td>Uniform (ယူနီဖောင်း)</td><td>฿700</td></tr>
+                <tr><td>5</td><td>Textbook (စာအုပ်ကြေး)</td><td>฿1,200</td></tr>
+                <tr class="total-row"><td></td><td><strong>Total</strong></td><td><strong>฿24,900</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- School fee payment -->
+          <div class="field-group">
+            <label class="field-label">School Fee Payment Plan · ကျောင်းစရိတ် ပေးချေနည်း <span class="required-star">*</span></label>
+            <span class="field-sub">How do you plan to pay the school fee?</span>
+            <div class="payment-options">
+              <label class="payment-option" onclick="selectPayment(this, 'school_fee_plan', '100% (1 installment) ฿12,000')">
+                <input type="radio" name="school_fee_plan" value="100% (1 installment) ฿12,000">
+                <span class="payment-pct">100%</span>
+                <span class="payment-thb">฿12,000</span>
+                <span class="payment-freq">1 × payment</span>
+              </label>
+              <label class="payment-option" onclick="selectPayment(this, 'school_fee_plan', '50% (2 installments) ฿6,000 each')">
+                <input type="radio" name="school_fee_plan" value="50% (2 installments) ฿6,000 each">
+                <span class="payment-pct">50%</span>
+                <span class="payment-thb">฿6,000 each</span>
+                <span class="payment-freq">2 × payments</span>
+              </label>
+              <label class="payment-option" onclick="selectPayment(this, 'school_fee_plan', '33.33% (3 installments) ฿4,000 each')">
+                <input type="radio" name="school_fee_plan" value="33.33% (3 installments) ฿4,000 each">
+                <span class="payment-pct">33.3%</span>
+                <span class="payment-thb">฿4,000 each</span>
+                <span class="payment-freq">3 × payments</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- Dorm -->
+          <div class="field-group">
+            <label class="field-label">Will you stay in the school dormitory? · ကျောင်းအဆောင်မှာ နေမလား? <span class="required-star">*</span></label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option" onclick="selectRadio(this,'dorm_stay','Yes'); toggleCondField('dorm_payment', true)">
+                <input type="radio" name="dorm_stay" value="Yes">
+                <div class="radio-dot"></div> Yes · နေမည်
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'dorm_stay','No'); toggleCondField('dorm_payment', false)">
+                <input type="radio" name="dorm_stay" value="No">
+                <div class="radio-dot"></div> No · မနေ
+              </label>
+            </div>
+            <div class="conditional-field" id="dorm_payment">
+              <label class="field-label" style="margin-bottom:8px;">Dorm Fee Payment Plan · အဆောင်ခ ပေးချေနည်း <span class="required-star">*</span></label>
+              <div class="payment-options">
+                <label class="payment-option" onclick="selectPayment(this, 'dorm_fee_plan', '100% (1 installment) ฿10,000')">
+                  <input type="radio" name="dorm_fee_plan" value="100% (1 installment) ฿10,000">
+                  <span class="payment-pct">100%</span>
+                  <span class="payment-thb">฿10,000</span>
+                  <span class="payment-freq">1 × payment</span>
+                </label>
+                <label class="payment-option" onclick="selectPayment(this, 'dorm_fee_plan', '50% (2 installments) ฿5,000 each')">
+                  <input type="radio" name="dorm_fee_plan" value="50% (2 installments) ฿5,000 each">
+                  <span class="payment-pct">50%</span>
+                  <span class="payment-thb">฿5,000 each</span>
+                  <span class="payment-freq">2 × payments</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Who will be paying your expenses? <span class="required-star">*</span></label>
+            <span class="field-sub">မိမိ၏အသုံးစရိတ်များကို မည်သူအကုန်ကျခံမည်နည်း? (ဥပမာ - အုပ်ထိန်းသူ, အကို, အစ်မ — full name required)</span>
+            <input type="text" name="expense_payer" placeholder="e.g. Father — U Saw Htoo, self-funded, sponsor name..." required>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Declaration &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 7: DECLARATION ====== -->
+    <div class="step-panel" id="step7">
+      <div class="form-card">
+        <div class="section-header">
+          <div class="section-letter">G</div>
+          <div class="section-title-group">
+            <div class="section-eyebrow">Section G</div>
+            <h2>Declaration · တာဝန်ခံချက်</h2>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="declaration-box">
+            I certify that the information provided in this form is accurate and complete to the best of my knowledge.
+            Submission of fraudulent information will result in disqualification if discovered.<br><br>
+            <em>ဤဖောင်တွင် ပေးထားသော အချက်အလက်များသည် မှန်ကန်ကြောင်း ဝန်ခံပါသည်။ မမှန်ကန်သောအချက်အလက်များ တင်ပြပါက တွေ့ရှိပါက အလိုအလျောက်ပယ်ချခြင်းခံရမည်။</em>
+          </div>
+
+          <div class="sig-row">
+            <div class="field-group">
+              <label class="field-label">Student's Full Name (Signature Confirmation) <span class="required-star">*</span></label>
+              <span class="field-sub">ကျောင်းသား လက်မှတ် (typing your name confirms signature)</span>
+              <input type="text" name="student_signature" placeholder="Type your full name to confirm" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Date · ရက်စွဲ <span class="required-star">*</span></label>
+              <input type="date" name="signature_date" required>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="sig-row">
+            <div class="field-group">
+              <label class="field-label">Parent/Guardian Full Name <span class="required-star">*</span></label>
+              <span class="field-sub">မိဘ/အုပ်ထိန်းသူ လက်မှတ် · မိဘ/အုပ်ထိန်းသူ အမည်</span>
+              <input type="text" name="guardian_signature" placeholder="Type parent/guardian full name" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Date · ရက်စွဲ <span class="required-star">*</span></label>
+              <input type="date" name="guardian_date" required>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="field-group">
+            <label class="radio-option" onclick="this.classList.toggle('selected')" style="gap:12px; width:100%; justify-content:flex-start;">
+              <input type="checkbox" name="agree" value="yes" required>
+              <span>I confirm that all information provided is accurate and I agree to the terms above. <span class="required-star">*</span></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-submit">
+            ✓ &nbsp; Submit Application · လျှောက်လွှာ တင်ပါ
+          </button>
+
+          <p style="text-align:center; font-size:0.78rem; color: var(--color-muted); margin-top:14px;">
+            After submitting, you will receive a confirmation email. DRA will contact you with further instructions.
+          </p>
+
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">&larr; Back</button>
+        <div></div>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS SCREEN -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Application Submitted!</h2>
+    <p style="margin-bottom:16px;">
+      Thank you for applying to Dooplaya Rise Academy's GED Program.<br>
+      We will review your application and contact you soon.
+    </p>
+    <p style="font-size:0.82rem; margin-bottom:24px;">
+      <strong>Entrance Exam:</strong> May 15, 2026 · 8:00 AM – 12:00 PM<br>
+      <strong>Interview:</strong> May 16, 2026 · 8:00 AM (shortlisted candidates only)<br>
+      <strong>Contact:</strong> dooplayariseacademy@hotmail.com
+    </p>
+    <div style="font-size:0.8rem; color: var(--color-gold-dark); font-weight:700; letter-spacing:2px; text-transform:uppercase;">
+      Learn. Grow. Rise.
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="background:#1A1A1A; color:#CCCCCC; padding:28px 32px; font-family:'Open Sans',sans-serif; font-size:0.82rem; text-align:center;">
+  <div style="font-weight:700; color:#fff; margin-bottom:6px;">Dooplaya Rise Academy</div>
+  <div style="margin-bottom:8px;">ကရင်စုံလောင်းကွင်းအနား, ထောမဲ့ပဲ့လါရပ်ကွက်, ဘုရားသုံးဆူမြို့, ကရင်ပြည်နယ်</div>
+  <div style="color:#888;">
+    📞 +66 886184692 (Thailand) / +95 9763416163 (Myanmar) &nbsp;·&nbsp;
+    ✉ <a href="mailto:dooplayariseacademy@hotmail.com" style="color:#F5A800; text-decoration:none;">dooplayariseacademy@hotmail.com</a>
+  </div>
+  <div style="border-top:1px solid #333; padding-top:16px; margin-top:16px; font-size:0.72rem; color:#555;">
+    © 2026 Dooplaya Rise Academy. All rights reserved. · <em>Learn. Grow. Rise.</em>
+  </div>
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 7;
+
+  const stepNames = [
+    'Applicant Information',
+    'Medical Information',
+    'Educational Background',
+    'Emergency Contact',
+    'Recommendations',
+    'Financial & Residential',
+    'Declaration'
+  ];
+
+  function updateProgress() {
+    const pct = Math.round((currentStep / totalSteps) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressText').textContent =
+      `Step ${currentStep} of ${totalSteps} — ${stepNames[currentStep - 1]}`;
+
+    document.querySelectorAll('.step-dot').forEach((dot, i) => {
+      dot.classList.remove('active', 'done');
+      if (i + 1 < currentStep) dot.classList.add('done');
+      else if (i + 1 === currentStep) dot.classList.add('active');
+    });
+
+    // Checkmarks on done steps
+    document.querySelectorAll('.step-dot.done .step-circle').forEach(c => {
+      if (!c.dataset.orig) c.dataset.orig = c.textContent;
+      c.textContent = '✓';
+    });
+    document.querySelectorAll('.step-dot:not(.done) .step-circle').forEach(c => {
+      if (c.dataset.orig) c.textContent = c.dataset.orig;
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < totalSteps) {
+      document.getElementById('step' + currentStep).classList.remove('active');
+      currentStep++;
+      document.getElementById('step' + currentStep).classList.add('active');
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      document.getElementById('step' + currentStep).classList.remove('active');
+      currentStep--;
+      document.getElementById('step' + currentStep).classList.add('active');
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function selectRadio(el, name, value) {
+    document.querySelectorAll(`[name="${name}"]`).forEach(r => {
+      r.closest('.radio-option').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('input[type="radio"]').checked = true;
+  }
+
+  function selectPayment(el, name, value) {
+    document.querySelectorAll(`[name="${name}"]`).forEach(r => {
+      r.closest('.payment-option').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('input[type="radio"]').checked = true;
+  }
+
+  function toggleCondField(id, show) {
+    const el = document.getElementById(id);
+    if (show) el.classList.add('visible');
+    else el.classList.remove('visible');
+  }
+
+  function showFeeView(track) {
+    document.querySelectorAll('.fee-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.fee-view').forEach(v => v.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('fee-' + track).classList.add('active');
+    document.getElementById('program_track').value =
+      track === 'ged' ? 'GED Program' : 'GED Foundations + Pre-GED';
+  }
+
+  // Handle form submission
+  document.getElementById('appForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const submitBtn = this.querySelector('[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      const formData = new FormData(this);
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.getElementById('progressContainer').style.display = 'none';
+        document.getElementById('appForm').style.display = 'none';
+        document.getElementById('successScreen').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('There was a problem submitting the form. Please email dooplayariseacademy@hotmail.com directly.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '✓  Submit Application · လျှောက်လွှာ တင်ပါ';
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again, or email dooplayariseacademy@hotmail.com.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '✓  Submit Application · လျှောက်လွှာ တင်ပါ';
+    }
+  });
+
+  // Set today's date as default for signature date
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelector('[name="signature_date"]').value = today;
+  document.querySelector('[name="guardian_date"]').value = today;
+</script>
+
+</body>
+</html>
